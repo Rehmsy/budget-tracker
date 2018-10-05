@@ -4,11 +4,6 @@ import styles from './Header.css';
 
 class Header extends Component {
 
-  handleSpecial = event => {
-    event.preventDefault();
-    alert('that link is cute!');
-  };
-
   render()  {
 
     return (

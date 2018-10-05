@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { load, add, update } from './actions';
 import Categories from './Categories';
 import CategoryForm from './CategoryForm';
-import { load, add, update } from './actions';
-//import { getCategories } from './reducers';
+import { getCategories } from './reducers';
 
 class Dashboard extends Component {
 
@@ -24,13 +24,13 @@ class Dashboard extends Component {
     return (
       <div>
         <section>
-          <h2>Dashboard to add category stuffs</h2>
+          <h2>Add an expense category to get started:</h2>
           <CategoryForm onComplete={add}/>
         </section>
 
         {categories && 
           <section> 
-            <h3>Them Categories</h3>
+            <h3>Categories and expenses:</h3>
             <Categories
               categories={categories}
               onUpdate={update}
@@ -44,7 +44,7 @@ class Dashboard extends Component {
 
 export default connect(
   state => ({
-    categories: state
+    categories: getCategories(state)
   }),
   { load, add }
 )(Dashboard);

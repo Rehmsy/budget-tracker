@@ -1,52 +1,52 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class CategoryForm extends Component {
+class ExpensesForm extends Component {
 
   state = {
-    editing: false,
     key: null,
-    timestamp: new Date(),
+    categoryId: null,
     name: '',
-    budget: 0
+    price: 0
   };
 
   static propTypes = {
-    category: PropTypes.object,
+    expense: PropTypes.object,
     onComplete: PropTypes.func.isRequired,
-    onCancel: PropTypes.func
+    onCancel: PropTypes.func,
+    categoryId: PropTypes.string
   };
 
   componentDidMount() {
-    const { category } = this.props;
-    if(!category) return;
+    const { expense } = this.props;
+    if(!expense) return;
 
-    this.setState(category);
+    this.setState(expense);
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { key, name, budget, timestamp } = this.state;
-    const category = { name, budget, timestamp }
+    const { key, categoryId, name, price } = this.state;
+    const expense = { categoryId, name, price }
 ;
-    if(key) category.key = key;
+    if(key) expense.key = key;
 
-    this.props.onComplete(category);
-    this.setState({ name: '', budget: '', timestamp });
+    this.props.onComplete(expense);
+    this.setState({ name: '', price: '' });
   };
 
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
   };
 
-  render() {
-    const { key, name, budget } = this.state;
+  render() { 
+    const { key, name, price } = this.state;
     const { onCancel } = this.props;
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <InputControl name="name" placeholder="Category"value={name} onChange={this.handleChange}/>
-        <InputControl name="budget" value={budget} onChange={this.handleChange}/>
+        <InputControl name="name" placeholder="Expense Name" value={name} onChange={this.handleChange}/>
+        <InputControl name="price" value={price} onChange={this.handleChange}/>
         <p>
           <button type="submit">{ key ? 'Update' : 'Add' }</button>
           {key && <button type="button" onClick={onCancel}>Cancel</button>}
@@ -65,4 +65,4 @@ const InputControl = (props) => (
   </p>
 );
 
-export default CategoryForm;
+export default ExpensesForm;

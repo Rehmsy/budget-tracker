@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom';
 import Header from './Header';
 import Landing from './Landing';
-import Dashboard from './categories/Dashboard';
+import Dashboard from '../categories/Dashboard';
 import styles from './App.css';
 
 class App extends Component {

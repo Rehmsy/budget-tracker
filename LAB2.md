@@ -14,7 +14,7 @@ Today you'll add expenses that belong to categories.
 ## Data 
 
 ### `category`
-
+s
 Update each category to have an expenses property that is an array of expense objects. Keep in mind that when 
 categories get loaded, the data will be split out into the `categories` reducers and an `expensesByCategory` reducer.
 
@@ -24,9 +24,9 @@ In this app an expense should contain at least the following properties:
 
 * `id` a uuid
 * `categoryId` an id that corresponds to an existing category
-* `timestamp` a date from when the category was created
-* `name` a string that is the name of the category
-* `price` a number that is the total amount of $ in the category 
+* `timestamp` a date from when the expense was created
+* `name` a string that is the name of the expense
+* `price` a number that is the amount of the expense
 * feel free to add more to your expense if you want
 
 ## Redux
@@ -89,7 +89,7 @@ Create the following components and structure them according to the following di
 Provider
   App
     Dashboard
-      CategoryForm -- for creating categorys
+      CategoryForm -- for creating categories
       Categories -- list of categories
         Category -- wrapper and container for either display or form          
           CategoryForm  -- for updating category
@@ -144,3 +144,4 @@ Write a description of the project in your README.md
 * Tested Expense reducers and actions **4pts**
 * Tested Expense selectors **3pts**
 * Project and code consistency, cleanliness, and organization **2pts**
+
